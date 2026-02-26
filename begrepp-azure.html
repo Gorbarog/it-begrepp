@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Azure-begrepp · Mattias IT-handbok</title>
+  <meta name="description" content="Kategoriserad ordlista med Azure-termer och praktiska förklaringar." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* Små, lokala tillägg – håller allt robust och enkelt */
+    .toc { display:flex; flex-wrap:wrap; gap:.5rem; margin: .6rem 0 0; }
+    .term-grid { display:grid; gap: .9rem; }
+    .term { padding: 1rem 1.05rem; }
+    .term h3 { margin: 0 0 .45rem; font-size: 1.05rem; }
+    .meta { display:flex; flex-wrap:wrap; gap:.45rem; margin: .3rem 0 .8rem; }
+    .chip {
+      display:inline-block;
+      padding: .2rem .55rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      font-size: .9rem;
+      color: CanvasText;
+    }
+    .search-row { display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; margin: .9rem 0 0; }
+    .search-row input {
+      flex: 1 1 320px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: .6rem .75rem;
+      background: Canvas;
+      color: CanvasText;
+      font-size: 1rem;
+    }
+    .count { color: var(--muted); }
+    .category-title { margin: 1.2rem 0 .6rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img class="brand-mark" src="assets/logo.svg" alt="" width="36" height="36" />
+        <div class="brand-text">
+          <div class="brand-title">Mattias IT-handbok</div>
+          <div class="brand-subtitle">Azure-begrepp</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Öppna meny</span>
+        ☰
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Huvudmeny">
+        <a class="nav-link" href="index.html">Hem</a>
+        <a class="nav-link" href="azure.html">Azure</a>
+        <a class="nav-link" href="begrepp-azure.html" aria-current="page">Azure-begrepp</a>
+        <a class="nav-link" href="natverk.html">Nätverk</a>
+        <a class="nav-link" href="labb.html">Labb</a>
+        <a class="nav-link" href="checklistor.html">Checklistor</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Azure-begrepp – kategoriserad ordlista</h1>
+    <p class="muted">
+      Syftet är inte att samla “allt”, utan att samla det som är <em>praktiskt användbart</em> och går att hålla uppdaterat.
+      Varje term har en kort definition, en användningskontext och en vanlig fallgrop – det är där handboken blir värdefull.
+    </p>
+
+    <section class="card">
+      <h2>Snabbnavigering</h2>
+      <div class="toc" aria-label="Kategorier">
+        <a class="pill" href="#identity">Identity</a>
+        <a class="pill" href="#governance">Governance</a>
+        <a class="pill" href="#compute">Compute</a>
+        <a class="pill" href="#network">Network</a>
+        <a class="pill" href="#storage">Storage</a>
+        <a class="pill" href="#operations">Operations</a>
+      </div>
+
+      <div class="search-row" role="search" aria-label="Sök i ordlistan">
+        <label class="sr-only" for="q">Sök</label>
+        <input id="q" type="search" placeholder="Sök term eller kategori… (t.ex. RBAC, VNet, Policy)" autocomplete="off" />
+        <div class="count" id="count" aria-live="polite">Visar alla termer.</div>
+      </div>
+
+      <p class="note">
+        Tips: när du stöter på en term i verkligheten, lägg till den här och skriv en “fallgrop”.
+        Det är ett beprövat sätt att bygga kunskap som håller över tid.
+      </p>
+    </section>
+
+    <!-- IDENTITY -->
+    <h2 id="identity" class="category-title">Identity</h2>
+    <section class="term-grid" data-category="Identity">
+      <article class="card term" data-terms="Tenant Entra ID Microsoft Entra katalog">
+        <h3>Tenant (Microsoft Entra ID-tenant)</h3>
+        <div class="meta">
+          <span class="chip">Identity</span>
+          <span class="chip">Grundbegrepp</span>
+        </div>
+        <p><strong>Definition:</strong> Din organisations identitetskatalog. Här finns användare, grupper, appar och policyer.</p>
+        <p><strong>Var används det?</strong> Inloggning, åtkomststyrning, app-registrering och säkerhetspolicyer.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man blandar ihop tenant med subscription. Tenant = identitet; subscription = resurser/kostnad.</p>
+      </article>
+
+      <article class="card term" data-terms="Service Principal App Registration App Registrering">
+        <h3>App Registration &amp; Service Principal</h3>
+        <div class="meta">
+          <span class="chip">Identity</span>
+        </div>
+        <p><strong>Definition:</strong> App Registration är “identiteten” för en app i Entra ID; Service Principal är den instans som används för åtkomst i en tenant.</p>
+        <p><strong>Var används det?</strong> Automation, CI/CD, tjänstkonton och integrationer som behöver tokens.</p>
+        <p class="note"><strong>Fallgrop:</strong> För breda behörigheter eller för långlivade hemligheter. Kör minsta privilegium och ha rotationsrutin.</p>
+      </article>
+
+      <article class="card term" data-terms="Managed Identity MI">
+        <h3>Managed Identity</h3>
+        <div class="meta">
+          <span class="chip">Identity</span>
+          <span class="chip">Säkerhet</span>
+        </div>
+        <p><strong>Definition:</strong> En identitet som Azure hanterar åt din resurs, så att du slipper lagra credentials i kod/konfiguration.</p>
+        <p><strong>Var används det?</strong> När en VM/App Service/Function ska läsa t.ex. Key Vault eller Storage.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man glömmer att tilldela rätt RBAC/åtkomst. Identitet finns – men saknar behörighet.</p>
+      </article>
+    </section>
+
+    <!-- GOVERNANCE -->
+    <h2 id="governance" class="category-title">Governance</h2>
+    <section class="term-grid" data-category="Governance">
+      <article class="card term" data-terms="Subscription abonnemang">
+        <h3>Subscription</h3>
+        <div class="meta">
+          <span class="chip">Governance</span>
+          <span class="chip">Kostnad</span>
+        </div>
+        <p><strong>Definition:</strong> Administrativ och ekonomisk avgränsning för Azure-resurser.</p>
+        <p><strong>Var används det?</strong> Kostnadsstyrning, kvoter, åtkomst (RBAC-scope) och resursindelning.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man lägger “allt i en subscription” och tappar styrning över kostnad och ansvar.</p>
+      </article>
+
+      <article class="card term" data-terms="Management Group MG">
+        <h3>Management Group</h3>
+        <div class="meta">
+          <span class="chip">Governance</span>
+        </div>
+        <p><strong>Definition:</strong> Nivån ovanför subscriptions för att kunna styra policy och åtkomst för många subscriptions samtidigt.</p>
+        <p><strong>Var används det?</strong> Koncernstyrning: standardpolicy, standardroller, struktur per verksamhet/miljö.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man bygger hierarki utan syfte. Håll det enkelt och motivera varje nivå.</p>
+      </article>
+
+      <article class="card term" data-terms="Resource Group RG">
+        <h3>Resource Group (RG)</h3>
+        <div class="meta">
+          <span class="chip">Governance</span>
+          <span class="chip">Livscykel</span>
+        </div>
+        <p><strong>Definition:</strong> En logisk behållare för resurser som hör ihop.</p>
+        <p><strong>Var används det?</strong> Samlad livscykel (skapa/ändra/rensa), delegering och struktur per system/miljö.</p>
+        <p class="note"><strong>Fallgrop:</strong> “Allt i en RG” eller RG per resurs. Sikta på RG per system + miljö som grund.</p>
+      </article>
+
+      <article class="card term" data-terms="RBAC rollbaserad åtkomst">
+        <h3>RBAC (Role-Based Access Control)</h3>
+        <div class="meta">
+          <span class="chip">Governance</span>
+          <span class="chip">Säkerhet</span>
+        </div>
+        <p><strong>Definition:</strong> Rollbaserad åtkomststyrning i Azure: vem får göra vad, på vilket scope.</p>
+        <p><strong>Var används det?</strong> Åtkomst till subscription/RG/resurs, driftroller, separation av ansvar.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man ger “Owner” slentrianmässigt. Det straffar sig vid revision och incidenter.</p>
+      </article>
+
+      <article class="card term" data-terms="Azure Policy policy">
+        <h3>Azure Policy</h3>
+        <div class="meta">
+          <span class="chip">Governance</span>
+        </div>
+        <p><strong>Definition:</strong> Regelverk som kräver, förbjuder eller granskar konfigurationer.</p>
+        <p><strong>Var används det?</strong> Tvinga taggar, begränsa regioner, kräva kryptering, standardisera.</p>
+        <p class="note"><strong>Fallgrop:</strong> Policy införs för sent eller för aggressivt utan undantag/plan – skapa ordnad införandeprocess.</p>
+      </article>
+
+      <article class="card term" data-terms="Tags taggar metadata">
+        <h3>Tags</h3>
+        <div class="meta">
+          <span class="chip">Governance</span>
+          <span class="chip">Kostnad</span>
+        </div>
+        <p><strong>Definition:</strong> Metadata på resurser (t.ex. Owner, System, Environment, CostCenter).</p>
+        <p><strong>Var används det?</strong> Kostnadsuppföljning, förvaltning, filtrering och rapportering.</p>
+        <p class="note"><strong>Fallgrop:</strong> Taggar glöms bort. Kombinera policy + tydlig standard för att få det att sitta.</p>
+      </article>
+    </section>
+
+    <!-- COMPUTE -->
+    <h2 id="compute" class="category-title">Compute</h2>
+    <section class="term-grid" data-category="Compute">
+      <article class="card term" data-terms="Virtual Machine VM">
+        <h3>Virtual Machine (VM)</h3>
+        <div class="meta">
+          <span class="chip">Compute</span>
+        </div>
+        <p><strong>Definition:</strong> En virtuell server i Azure som du ansvarar för (OS, patchning, konfiguration).</p>
+        <p><strong>Var används det?</strong> När du behöver full kontroll eller kör legacy-laster.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man behandlar VM som “billig drift”. Patchning och säkerhet blir snabbt en kostnad.</p>
+      </article>
+
+      <article class="card term" data-terms="App Service Web App">
+        <h3>App Service (Web App)</h3>
+        <div class="meta">
+          <span class="chip">Compute</span>
+          <span class="chip">PaaS</span>
+        </div>
+        <p><strong>Definition:</strong> Plattformstjänst för att köra webbappar utan att du hanterar servern i detalj.</p>
+        <p><strong>Var används det?</strong> Webbplatser, API:er och enklare tjänster med smidig deploy och skalning.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man glömmer loggar/övervakning och får dålig felsökning när det väl brinner.</p>
+      </article>
+
+      <article class="card term" data-terms="App Service Plan plan">
+        <h3>App Service Plan</h3>
+        <div class="meta">
+          <span class="chip">Compute</span>
+          <span class="chip">Kostnad</span>
+        </div>
+        <p><strong>Definition:</strong> “Kapacitetsbehållaren” bakom App Service (prisnivå, CPU/RAM, skalning).</p>
+        <p><strong>Var används det?</strong> När du vill gruppera flera appar på samma kapacitet eller styra prestanda.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man blandar appar med olika krav i samma plan och får svårstyrd kostnad och prestanda.</p>
+      </article>
+    </section>
+
+    <!-- NETWORK -->
+    <h2 id="network" class="category-title">Network</h2>
+    <section class="term-grid" data-category="Network">
+      <article class="card term" data-terms="Region Sweden Central">
+        <h3>Region</h3>
+        <div class="meta">
+          <span class="chip">Network</span>
+          <span class="chip">Placering</span>
+        </div>
+        <p><strong>Definition:</strong> Geografiskt område där dina resurser körs.</p>
+        <p><strong>Var används det?</strong> Latency, regelefterlevnad, redundansstrategi och ibland pris.</p>
+        <p class="note"><strong>Fallgrop:</strong> “Vi tar en region på måfå.” Bestäm standardregion och motivera avsteg.</p>
+      </article>
+
+      <article class="card term" data-terms="Availability Zone AZ zon">
+        <h3>Availability Zone</h3>
+        <div class="meta">
+          <span class="chip">Network</span>
+          <span class="chip">Resiliens</span>
+        </div>
+        <p><strong>Definition:</strong> Separata datacenters inom en region som används för högre tillgänglighet.</p>
+        <p><strong>Var används det?</strong> Tjänster som måste tåla datacenterstörningar.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man antar att “region” automatiskt ger zonredundans. Det måste väljas där det stöds.</p>
+      </article>
+
+      <article class="card term" data-terms="Virtual Network VNet">
+        <h3>Virtual Network (VNet)</h3>
+        <div class="meta">
+          <span class="chip">Network</span>
+        </div>
+        <p><strong>Definition:</strong> Ditt privata nät i Azure, där du bygger subnät, routing och kopplingar.</p>
+        <p><strong>Var används det?</strong> Isolering, privata anslutningar, hub-and-spoke, integration on-prem.</p>
+        <p class="note"><strong>Fallgrop:</strong> Dålig IP-planering. Planera adresser som om du ska leva med dem i många år.</p>
+      </article>
+
+      <article class="card term" data-terms="Subnet subnät">
+        <h3>Subnet</h3>
+        <div class="meta">
+          <span class="chip">Network</span>
+        </div>
+        <p><strong>Definition:</strong> Del av ett VNet där resurser placeras.</p>
+        <p><strong>Var används det?</strong> Segmentering, säkerhetsregler (NSG), routing och tjänsteintegration.</p>
+        <p class="note"><strong>Fallgrop:</strong> För små subnät eller “allt i samma”. Segmentera tidigt med enkel logik.</p>
+      </article>
+
+      <article class="card term" data-terms="NSG Network Security Group">
+        <h3>Network Security Group (NSG)</h3>
+        <div class="meta">
+          <span class="chip">Network</span>
+          <span class="chip">Säkerhet</span>
+        </div>
+        <p><strong>Definition:</strong> Regler för in- och utgående trafik på subnet eller nätverkskort (NIC).</p>
+        <p><strong>Var används det?</strong> Grundläggande mikrosegmentering och begränsning av öppna portar.</p>
+        <p class="note"><strong>Fallgrop:</strong> “Öppna allt för att testa.” Testmiljöer blir lätt permanenta – öppna kontrollerat.</p>
+      </article>
+
+      <article class="card term" data-terms="Private Endpoint">
+        <h3>Private Endpoint</h3>
+        <div class="meta">
+          <span class="chip">Network</span>
+          <span class="chip">PaaS</span>
+        </div>
+        <p><strong>Definition:</strong> Privat anslutning till en PaaS-tjänst via ditt VNet (inte via internet).</p>
+        <p><strong>Var används det?</strong> Storage, Key Vault, databaser – när du vill hålla trafik privat.</p>
+        <p class="note"><strong>Fallgrop:</strong> DNS glöms bort (privata zoner). Utan rätt DNS pekar klienter fel.</p>
+      </article>
+    </section>
+
+    <!-- STORAGE -->
+    <h2 id="storage" class="category-title">Storage</h2>
+    <section class="term-grid" data-category="Storage">
+      <article class="card term" data-terms="Storage Account">
+        <h3>Storage Account</h3>
+        <div class="meta">
+          <span class="chip">Storage</span>
+        </div>
+        <p><strong>Definition:</strong> Grundresursen för Blob, File, Queue och Table storage.</p>
+        <p><strong>Var används det?</strong> Filer, objektlagring, statiska webbar, loggar, integrationer.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man exponerar storage publikt utan behov. Kombinera privat åtkomst och korrekt behörighet.</p>
+      </article>
+
+      <article class="card term" data-terms="Blob Storage">
+        <h3>Blob Storage</h3>
+        <div class="meta">
+          <span class="chip">Storage</span>
+        </div>
+        <p><strong>Definition:</strong> Objektlagring för filer och “blobs” (bilder, loggar, arkiv, backups).</p>
+        <p><strong>Var används det?</strong> Arkivering, filhantering, statiskt innehåll, data pipelines.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man ignorerar livscykelregler och kostnad växer. Sätt retention/tiers tidigt.</p>
+      </article>
+
+      <article class="card term" data-terms="Key Vault">
+        <h3>Key Vault</h3>
+        <div class="meta">
+          <span class="chip">Storage</span>
+          <span class="chip">Säkerhet</span>
+        </div>
+        <p><strong>Definition:</strong> Tjänst för att lagra hemligheter, nycklar och certifikat på ett kontrollerat sätt.</p>
+        <p><strong>Var används det?</strong> Secrets i applikationer, certifikathantering, krypteringsnycklar.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man lagrar hemligheter i konfig-filer. Använd Key Vault + Managed Identity.</p>
+      </article>
+    </section>
+
+    <!-- OPERATIONS -->
+    <h2 id="operations" class="category-title">Operations</h2>
+    <section class="term-grid" data-category="Operations">
+      <article class="card term" data-terms="ARM Azure Resource Manager">
+        <h3>Azure Resource Manager (ARM)</h3>
+        <div class="meta">
+          <span class="chip">Operations</span>
+        </div>
+        <p><strong>Definition:</strong> Styrplanet för hur resurser skapas och hanteras (portal, CLI, templates).</p>
+        <p><strong>Var används det?</strong> Automatisering, standardisering och repetitiva deploymentflöden.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man gör allt manuellt i portalen. Det blir svårt att repetera och granska i efterhand.</p>
+      </article>
+
+      <article class="card term" data-terms="Logs Log Analytics">
+        <h3>Loggar &amp; Log Analytics (princip)</h3>
+        <div class="meta">
+          <span class="chip">Operations</span>
+          <span class="chip">Felsökning</span>
+        </div>
+        <p><strong>Definition:</strong> Insamling och analys av loggar för att kunna felsöka och följa upp drift.</p>
+        <p><strong>Var används det?</strong> Incidenthantering, trendanalys, spårbarhet och revision.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man aktiverar loggar först när något gått fel. Slå på loggar tidigt, annars famlar du.</p>
+      </article>
+
+      <article class="card term" data-terms="Scaling scale out scale up">
+        <h3>Skalning (Scale up / Scale out)</h3>
+        <div class="meta">
+          <span class="chip">Operations</span>
+          <span class="chip">Kapacitet</span>
+        </div>
+        <p><strong>Definition:</strong> Scale up = större instans; scale out = fler instanser.</p>
+        <p><strong>Var används det?</strong> Vid lasttoppar, prestandaproblem eller för att få bättre tillgänglighet.</p>
+        <p class="note"><strong>Fallgrop:</strong> Man skalar utan att förstå flaskhalsen. Mät först: CPU, minne, I/O, svarstider.</p>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Att bygga vidare (ordning och reda)</h2>
+      <ul class="clean">
+        <li>Behåll samma mall för varje term: <em>Definition</em> → <em>Var används det?</em> → <em>Fallgrop</em>.</li>
+        <li>Lägg till 2–5 termer per vecka. Det är bättre än att försöka göra 200 på en helg.</li>
+        <li>När du stöter på en oklar term i en labb eller kurs: skriv ner den direkt här.</li>
+      </ul>
+      <p class="muted">Nästa naturliga steg är att lägga in fler Governance-termer (t.ex. Blueprint/Initiative), samt nätverk (VPN/ExpressRoute) när du kommer dit.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mattias IT-handbok</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+  <script>
+    // Enkel filtrering: söker på term + kategori + nyckelord. Inget backend, inga beroenden.
+    (function () {
+      const q = document.getElementById("q");
+      const count = document.getElementById("count");
+      const terms = Array.from(document.querySelectorAll(".term"));
+      const sections = Array.from(document.querySelectorAll(".term-grid"));
+
+      function update() {
+        const needle = (q.value || "").trim().toLowerCase();
+        let visible = 0;
+
+        terms.forEach(t => {
+          const category = (t.closest(".term-grid")?.getAttribute("data-category") || "").toLowerCase();
+          const hay = ((t.getAttribute("data-terms") || "") + " " + t.textContent + " " + category).toLowerCase();
+          const show = !needle || hay.includes(needle);
+          t.style.display = show ? "" : "none";
+          if (show) visible++;
+        });
+
+        // Dölj kategorisektioner som inte har synliga termer
+        sections.forEach(s => {
+          const anyVisible = Array.from(s.querySelectorAll(".term")).some(t => t.style.display !== "none");
+          s.style.display = anyVisible ? "" : "none";
+
+          // Visa/dölj kategorirubrik (h2 precis före sektionen)
+          const heading = s.previousElementSibling;
+          if (heading && heading.tagName === "H2") heading.style.display = anyVisible ? "" : "none";
+        });
+
+        count.textContent = needle
+          ? `Visar ${visible} term(er) för “${q.value}”.`
+          : "Visar alla termer.";
+      }
+
+      if (q) q.addEventListener("input", update);
+      update();
+    })();
+  </script>
+</body>
+</html>
