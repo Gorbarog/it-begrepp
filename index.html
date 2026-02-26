@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Mattias IT-handbok</title>
+  <meta name="description" content="En enkel, snabb och lättförvaltad IT-handbok med checklistor och anteckningar." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img class="brand-mark" src="assets/logo.svg" alt="" width="36" height="36" />
+        <div class="brand-text">
+          <div class="brand-title">Mattias IT-handbok</div>
+          <div class="brand-subtitle">Strukturer, checklistor och anteckningar – hållbart över tid</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Öppna meny</span>
+        ☰
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Huvudmeny">
+        <a class="nav-link" href="index.html" aria-current="page">Hem</a>
+        <a class="nav-link" href="azure.html">Azure</a>
+        <a class="nav-link" href="natverk.html">Nätverk</a>
+        <a class="nav-link" href="labb.html">Labb</a>
+        <a class="nav-link" href="checklistor.html">Checklistor</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero">
+      <h1>En handbok som går att förvalta</h1>
+      <p>
+        Detta är en medvetet enkel webb: få beroenden, tydlig struktur och klassisk navigation.
+        Den är byggd för att du ska kunna lägga till innehåll stegvis utan att skapa teknisk skuld.
+      </p>
+
+      <div class="hero-grid">
+        <article class="card">
+          <h2>Så använder du den</h2>
+          <ul class="clean">
+            <li>Varje ämne har en egen sida (Azure, Nätverk, Labb…)</li>
+            <li>Checklistor är korta och konsekventa – bra för drift och release</li>
+            <li>Ändra text direkt i HTML-filerna, eller kopiera en sida som mall</li>
+          </ul>
+          <a class="button" href="checklistor.html">Gå till checklistor</a>
+        </article>
+
+        <article class="card">
+          <h2>Principer (traditionella men effektiva)</h2>
+          <ul class="clean">
+            <li>Enkelhet före “flash”</li>
+            <li>Stabila länkar och tydliga rubriker</li>
+            <li>Tillgänglighet och snabb laddning</li>
+            <li>Inga onödiga ramverk</li>
+          </ul>
+          <a class="button secondary" href="labb.html">Se labb-upplägg</a>
+        </article>
+
+        <article class="card">
+          <h2>Snabblänkar</h2>
+          <div class="link-grid">
+            <a class="pill" href="azure.html">Azure-grunder</a>
+            <a class="pill" href="natverk.html">DNS/DHCP</a>
+            <a class="pill" href="labb.html">Labbmiljö</a>
+            <a class="pill" href="checklistor.html">Release-checklista</a>
+            <a class="pill" href="checklistor.html#backup">Backup</a>
+            <a class="pill" href="kontakt.html">Kontakt</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="two-col">
+      <article class="card">
+        <h2>Senaste ändringar</h2>
+        <p class="muted">En enkel plats för “changelog”. Uppdatera manuellt när du ändrar något viktigt.</p>
+        <ul>
+          <li><strong>2026-02-26</strong> – Första versionen skapad (mall, navigation, checklistor).</li>
+          <li><strong>2026-02-26</strong> – Grund för Azure/Nätverk/Labb-sidor.</li>
+        </ul>
+        <p class="note">Tips: håll förändringslogg kort. Notera bara sådant som påverkar användning eller drift.</p>
+      </article>
+
+      <aside class="card">
+        <h2>Byggstenar</h2>
+        <dl class="dl">
+          <div><dt>Typ</dt><dd>Statisk HTML/CSS/JS</dd></div>
+          <div><dt>Mål</dt><dd>Snabb, lätt, enkel att publicera i valfri hosting</dd></div>
+          <div><dt>Säkerhet</dt><dd>Inget backend = minimal attackyta</dd></div>
+          <div><dt>Förvaltning</dt><dd>Filer i ett repo, publicera vid ändring</dd></div>
+        </dl>
+        <p class="muted">Vill du senare lägga till inlogg/API kan du göra det separat, utan att riva upp grunden.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mattias IT-handbok · Byggd för ordning och reda.</p>
+      <p class="muted">Ingen spårning. Inga cookies. Bara innehåll.</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Nätverk · Mattias IT-handbok</title>
+  <meta name="description" content="DNS, DHCP och grundläggande nätverksstruktur för labb och hem." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img class="brand-mark" src="assets/logo.svg" alt="" width="36" height="36" />
+        <div class="brand-text">
+          <div class="brand-title">Mattias IT-handbok</div>
+          <div class="brand-subtitle">Nätverk</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Öppna meny</span>
+        ☰
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Huvudmeny">
+        <a class="nav-link" href="index.html">Hem</a>
+        <a class="nav-link" href="azure.html">Azure</a>
+        <a class="nav-link" href="natverk.html" aria-current="page">Nätverk</a>
+        <a class="nav-link" href="labb.html">Labb</a>
+        <a class="nav-link" href="checklistor.html">Checklistor</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Nätverk – DNS, DHCP och ordning</h1>
+    <p class="muted">
+      En stabil miljö börjar med grunddisciplin: tydliga subnät, konsekvent namnsättning,
+      dokumenterade DHCP-scope och en DNS du litar på.
+    </p>
+
+    <section class="two-col">
+      <article class="card">
+        <h2>DNS (praktiskt)</h2>
+        <ul>
+          <li><strong>Framåtsökning</strong>: A/AAAA-poster för tjänster.</li>
+          <li><strong>Omvänd uppslagning</strong>: PTR där det är relevant.</li>
+          <li><strong>Split-DNS</strong>: intern och extern vy om du publicerar tjänster.</li>
+          <li><strong>Reserv</strong>: minst två resolvers om du vill ha robusthet.</li>
+        </ul>
+        <p class="note">Skriv ned “sanningen”: var är din auktoritativa DNS, och vem får ändra?</p>
+      </article>
+
+      <aside class="card">
+        <h2>DHCP (praktiskt)</h2>
+        <ul>
+          <li>Ha en tydlig <strong>scope</strong>: ex. 192.168.50.100–199.</li>
+          <li>Reservera fasta IP för infrastruktur (switch/AP/NAS).</li>
+          <li>Dokumentera optioner: gateway, DNS, NTP.</li>
+          <li>Undvik “vilda västern”: en DHCP-server per nät.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="card">
+      <h2>Exempel: enkel labb-plan (att fylla på)</h2>
+      <div class="table-wrap" role="region" aria-label="Exempel på subnät och syfte">
+        <table>
+          <thead>
+            <tr>
+              <th>VLAN/Subnät</th>
+              <th>Syfte</th>
+              <th>Gateway</th>
+              <th>DHCP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>VLAN 10 / 192.168.10.0/24</td>
+              <td>Labb-servrar</td>
+              <td>192.168.10.1</td>
+              <td>Ja</td>
+            </tr>
+            <tr>
+              <td>VLAN 20 / 192.168.20.0/24</td>
+              <td>Klienter</td>
+              <td>192.168.20.1</td>
+              <td>Ja</td>
+            </tr>
+            <tr>
+              <td>VLAN 30 / 192.168.30.0/24</td>
+              <td>IoT</td>
+              <td>192.168.30.1</td>
+              <td>Ja</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">Byt ut exemplen mot din faktiska plan när du bestämmer dig.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mattias IT-handbok</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

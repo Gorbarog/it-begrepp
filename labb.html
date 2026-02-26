@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Labb · Mattias IT-handbok</title>
+  <meta name="description" content="Labbmiljö: struktur, mål och stegvisa övningar utan onödigt krångel." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img class="brand-mark" src="assets/logo.svg" alt="" width="36" height="36" />
+        <div class="brand-text">
+          <div class="brand-title">Mattias IT-handbok</div>
+          <div class="brand-subtitle">Labb</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Öppna meny</span>
+        ☰
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Huvudmeny">
+        <a class="nav-link" href="index.html">Hem</a>
+        <a class="nav-link" href="azure.html">Azure</a>
+        <a class="nav-link" href="natverk.html">Nätverk</a>
+        <a class="nav-link" href="labb.html" aria-current="page">Labb</a>
+        <a class="nav-link" href="checklistor.html">Checklistor</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Labbmiljö – steg för steg</h1>
+    <p class="muted">
+      En labbmiljö ska vara återuppbyggbar. Det är den gamla sanningen som fortfarande gäller:
+      dokumentera så att du kan riva och sätta upp igen utan drama.
+    </p>
+
+    <section class="card">
+      <h2>Mål</h2>
+      <ul>
+        <li>Öva Windows-roller (DNS/DHCP), grundläggande AD (om du vill) och klienthantering.</li>
+        <li>Öva publicering och drift av webb (denna handbok är första byggstenen).</li>
+        <li>Öva nätverkssegmentering (VLAN), brandväggsregler och felsökning.</li>
+      </ul>
+    </section>
+
+    <section class="two-col">
+      <article class="card">
+        <h2>Rekommenderad ordning (utan att överbygga)</h2>
+        <ol>
+          <li>Skapa ett separat labb-nät (egen “sandbox”).</li>
+          <li>Sätt upp en “bastjänst”: DNS + DHCP.</li>
+          <li>Bygg 1–2 klienter och verifiera namnuppslagning.</li>
+          <li>Lägg till en webbtjänst (statisk eller App Service).</li>
+          <li>Logga allt: ändringar, problem, lösningar.</li>
+        </ol>
+      </article>
+
+      <aside class="card">
+        <h2>Dokumentera alltid</h2>
+        <ul>
+          <li>IP-plan och namnstandard</li>
+          <li>Vilka konton som finns och varför</li>
+          <li>Vilka portar/tjänster som är öppna</li>
+          <li>Backup och återställning</li>
+        </ul>
+        <p class="note">Det här är “förvaltningstänk” – och det är exakt därför det fungerar i praktiken.</p>
+      </aside>
+    </section>
+
+    <section class="card">
+      <h2>Övning 1: Publicera denna webb</h2>
+      <ol>
+        <li>Lägg filerna i ett repo (Git).</li>
+        <li>Publicera på valfri hosting (GitHub Pages eller Nginx).</li>
+        <li>Slå på HTTPS och kontrollera redirects.</li>
+        <li>Testa i mobil + dator.</li>
+        <li>Gör en liten ändring och publicera igen.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mattias IT-handbok</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

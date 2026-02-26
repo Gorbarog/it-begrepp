@@ -1,0 +1,14 @@
+// Enkel JS: mobilmeny + årtal. Inga beroenden.
+(function () {
+  const year = document.getElementById("year");
+  if (year) year.textContent = String(new Date().getFullYear());
+
+  const btn = document.querySelector(".nav-toggle");
+  const nav = document.getElementById("site-nav");
+  if (!btn || !nav) return;
+
+  btn.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+})();

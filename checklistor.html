@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Checklistor · Mattias IT-handbok</title>
+  <meta name="description" content="Checklistor för drift: release, backup, felsökning och uppföljning." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img class="brand-mark" src="assets/logo.svg" alt="" width="36" height="36" />
+        <div class="brand-text">
+          <div class="brand-title">Mattias IT-handbok</div>
+          <div class="brand-subtitle">Checklistor</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Öppna meny</span>
+        ☰
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Huvudmeny">
+        <a class="nav-link" href="index.html">Hem</a>
+        <a class="nav-link" href="azure.html">Azure</a>
+        <a class="nav-link" href="natverk.html">Nätverk</a>
+        <a class="nav-link" href="labb.html">Labb</a>
+        <a class="nav-link" href="checklistor.html" aria-current="page">Checklistor</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Checklistor – korta, tydliga, återanvändbara</h1>
+    <p class="muted">
+      En bra checklista är inte “allt man kan göra”, utan det man <em>måste</em> göra varje gång.
+      Det är gammal driftvisdom: konsekvens slår ambition.
+    </p>
+
+    <section class="card" id="release">
+      <h2>Release – standardcheck (mall)</h2>
+      <ul class="checks">
+        <li><label><input type="checkbox" /> Releasebeslut finns (vad, när, vem, rollback).</label></li>
+        <li><label><input type="checkbox" /> Riskanalys/ändringsbeskrivning uppdaterad.</label></li>
+        <li><label><input type="checkbox" /> Backup/återställning verifierad (minst plan).</label></li>
+        <li><label><input type="checkbox" /> Loggar/övervakning kontrollerad (före release).</label></li>
+        <li><label><input type="checkbox" /> Genomförd i rätt miljö (prod/test) + rätt konfiguration.</label></li>
+        <li><label><input type="checkbox" /> Smoke test: startsida/API/nyckelflöde.</label></li>
+        <li><label><input type="checkbox" /> Kommunikation skickad (om relevant).</label></li>
+        <li><label><input type="checkbox" /> Uppföljning planerad (30–60 min, 24 h).</label></li>
+      </ul>
+      <p class="note">Tips: skriv in era “ska-krav” här. Lämna resten som separat dokumentation.</p>
+    </section>
+
+    <section class="card" id="backup">
+      <h2>Backup – kontrollcheck</h2>
+      <ul class="checks">
+        <li><label><input type="checkbox" /> Schema: när tas backup och hur länge sparas den?</label></li>
+        <li><label><input type="checkbox" /> Lagring: var ligger den (och är den skyddad)?</label></li>
+        <li><label><input type="checkbox" /> Återläsning testad (datum + resultat dokumenterat).</label></li>
+        <li><label><input type="checkbox" /> Åtkomst: vem kan läsa/ta bort backup?</label></li>
+      </ul>
+    </section>
+
+    <section class="card" id="felsokning">
+      <h2>Felsökning – 10-minuters rutinen</h2>
+      <ol>
+        <li>Notera tidpunkt och symptom (vad ser användaren?).</li>
+        <li>Kontrollera status (tjänst uppe? nät? DNS?).</li>
+        <li>Öppna loggar och leta efter fel runt tidpunkten.</li>
+        <li>Ändra inte fem saker – prova en sak och dokumentera.</li>
+        <li>Kommunicera: “vi undersöker” + nästa uppdateringstid.</li>
+      </ol>
+      <p class="muted">Det här är tråkigt – och därför fungerar det.</p>
+    </section>
+
+    <section class="card" id="forvaltning">
+      <h2>Förvaltning – veckovis kontroll</h2>
+      <ul class="checks">
+        <li><label><input type="checkbox" /> Incidenter: mönster, rotorsaker, åtgärdsplan.</label></li>
+        <li><label><input type="checkbox" /> Uppdateringar: OS/beroenden/ramverk (plan).</label></li>
+        <li><label><input type="checkbox" /> Kapacitet: CPU/minne/lagring (trend).</label></li>
+        <li><label><input type="checkbox" /> Kostnad (om moln): oväntade toppar?</label></li>
+        <li><label><input type="checkbox" /> Säkerhet: konton/behörigheter/nycklar.</label></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Utskrift</h2>
+      <p class="muted">
+        Den här sidan är byggd så att den går att skriva ut hyfsat. Använd webbläsarens skriv ut-funktion
+        och välj gärna “Bakgrundsgrafik” om du vill behålla stilen.
+      </p>
+      <a class="button" href="#" onclick="window.print(); return false;">Skriv ut checklistor</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mattias IT-handbok</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

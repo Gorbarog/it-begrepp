@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Kontakt · Mattias IT-handbok</title>
+  <meta name="description" content="Kontakt och förvaltningsinformation för Mattias IT-handbok." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img class="brand-mark" src="assets/logo.svg" alt="" width="36" height="36" />
+        <div class="brand-text">
+          <div class="brand-title">Mattias IT-handbok</div>
+          <div class="brand-subtitle">Kontakt</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Öppna meny</span>
+        ☰
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Huvudmeny">
+        <a class="nav-link" href="index.html">Hem</a>
+        <a class="nav-link" href="azure.html">Azure</a>
+        <a class="nav-link" href="natverk.html">Nätverk</a>
+        <a class="nav-link" href="labb.html">Labb</a>
+        <a class="nav-link" href="checklistor.html">Checklistor</a>
+        <a class="nav-link" href="kontakt.html" aria-current="page">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <h1>Kontakt och förvaltning</h1>
+    <p class="muted">
+      Den här sidan är avsedd för “vem äger vad”-information. Om du håller webben privat kan du hålla det kort.
+      Om du publicerar den öppet kan du istället länka till en kontaktformulärstjänst.
+    </p>
+
+    <section class="two-col">
+      <article class="card">
+        <h2>Förvaltningsinfo (mall)</h2>
+        <dl class="dl">
+          <div><dt>Ägare</dt><dd>Mattias</dd></div>
+          <div><dt>Syfte</dt><dd>Dokumentation, checklistor och labbanteckningar</dd></div>
+          <div><dt>Publicering</dt><dd>GitHub Pages</dd></div>
+          <div><dt>Version</dt><dd>1.0</dd></div>
+        </dl>
+        <p class="note">Tips: lägg till länk till repo här om du vill.</p>
+      </article>
+
+      <aside class="card">
+        <h2>Kontaktvägar (fyll i)</h2>
+        <ul class="clean">
+          <li><strong>E-post:</strong> <em>din-adress@example.com</em></li>
+          <li><strong>Git:</strong> <em>https://…</em></li>
+          <li><strong>Övrigt:</strong> <em>t.ex. Teams-länk internt</em></li>
+        </ul>
+        <p class="muted">Byt ut exemplen mot dina riktiga uppgifter.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mattias IT-handbok</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
